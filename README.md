@@ -13,7 +13,7 @@ A significant challenge was overcoming Blinkit's sophisticated anti-scraping mea
 
 1.  **POST Request Required:** The API requires a `POST` request with an empty body, not a simple `GET` request.
 2.  **Session-Specific Headers:** The request must include temporary, session-specific headers (`cookie`, `auth_key`, etc.) copied from a live browser session. These headers expire quickly.
-3.  **Location-Cookie Mismatch (Sabse Badi Chunauti):** The server cross-validates the location (`lat`/`lon`) in the request against the location information stored within the `cookie`. If these two locations do not match, the API returns a `{"error":"location not serviceable"}` message as a security measure, even if the requested location is technically valid.
+3.  **Location-Cookie Mismatch:** The server cross-validates the location (`lat`/`lon`) in the request against the location information stored within the `cookie`. If these two locations do not match, the API returns a `{"error":"location not serviceable"}` message as a security measure, even if the requested location is technically valid.
 
 ### Execution Result 
 Due to the security measure described above, the program consistently receives the `"location not serviceable"` response when iterating through the provided `blinkit_locations.csv` file, as the session cookie is tied to a single, different location.
